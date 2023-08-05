@@ -60,14 +60,23 @@ void Display::Stop()
 	I2C::Cmd(SEVENSEGDISPLAY_ADR, SevenSegDisplay::cmdStop);
 }
 
-// https://forum.arduino.cc/t/right-justify/93157/10
-
-void Display::U2c(char *buffer, unsigned long value)
+void Display::ConvertNumber(char *buffer, long value, int lastPos = (DISPLAYCHARS - 1))
 {
-	for(int i = DISPLAYCHARS - 1; i >= 0; i--) {
-		buffer[i] = (value == 0 && i != DISPLAYCHARS - 1) ? ' ' : '0' + value % 10;
-		value /= 10;
-	}
+    bool isNegative = (value < 0);
+
+    if(isNegative) {
+        value = -value;
+    }
+
+    for(int i = lastPos; i >= (isNegative ? 1 : 0); i--, value /= 10) {
+        // buffer[i] = '0' + value % 10;
+		buffer[i] = (value == 0 && i != lastPos) ? ' ' : '0' + value % 10;
+    }
+
+    if(isNegative && lastPos >= 1) {
+        buffer[lastPos - 1] = '-';
+    }
 }
+
 
 #pragma endregion --------------------------------------------------------------

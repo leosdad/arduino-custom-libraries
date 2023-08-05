@@ -26,7 +26,7 @@ class Display
 	static void Flash(unsigned int ms);
 	static void Rotate(unsigned int ms);
 	static void Stop();
-	static void U2c(char *buffer, unsigned long value);
+	static void ConvertNumber(char *buffer, long value, int lastPos = (DISPLAYCHARS - 1));
 };
 
 
