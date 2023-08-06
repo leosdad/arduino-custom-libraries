@@ -4,5 +4,21 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.exclude": {
+			"DFPlayerMini_Fast": true,
+			"DFRobotDFPlayerMini": true,
+			"ezButton": true,
+			"ezOutput": true,
+			"LiquidCrystal_I2C": true,
+			"PS2X_lib": true,
+			"Servo": true,
+			"SoftPWM": true,
+			"Tiny4kOLED": true,
+			"TinyOLED-Fonts": true,
+			"TrueRandom": true,
+			"U8g2": true,
+			"U8glib": true
+		}
+	}
 }
